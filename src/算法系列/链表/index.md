@@ -23,3 +23,7 @@
 • No extra space的方法能够实现正确就可以了，想不到没关系 • Merge k Sorted Lists
 • K 路归并算法一定要掌握!
 • 三种实现方式，分别实现，并熟练理解和掌握! • 顺便做一下 Merge k Sorted Arrays
+
+
+剑指offer中的经典题目：
+6 、 18、22、24、 25、52、 62、36、35

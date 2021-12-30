@@ -1,0 +1,81 @@
+// 利用id， 将数组转为树结构, id 为null 就是根结点
+
+const arr = [
+    {
+        id: 1,
+        val: "学校",
+        parentId: null,
+      },
+      {
+        id: 2,
+        val: "班级1",
+        parentId: 1,
+      },
+      {
+        id: 3,
+        val: "班级2",
+        parentId: 1,
+      },
+      {
+        id: 4,
+        val: "学生1",
+        parentId: 2,
+      },
+      {
+        id: 5,
+        val: "学生2",
+        parentId: 3,
+      },
+      {
+        id: 6,
+        val: "学生3",
+        parentId: 3,
+      },
+];
+const obj = arrayToTree(arr, null);
+console.log(obj);
+// function arrayToTree(arr, id) {
+//     const array = [];
+//     buildTree(arr, id, array);
+//     return array.length ? (array.length > 1 ? array : array[0]) : {}
+// }
+
+// // 递归
+// function buildTree(arr, id, resArr) {
+//     arr.forEach(item => {
+//         if(item.parentId === id) {
+//             item.children = [];
+//             buildTree(arr, item.id, item.children)
+//             resArr.push(item)
+//         }
+//     });
+// }
+
+
+function arrayToTree(array = []) {
+  // 获取祖先节点
+  const root = array.shift();
+  const tree = {
+      id: root.id,
+      val: root.val,
+      children: toTree(root.id, array)
+  };
+  return tree;
+}
+
+function toTree(parentId, array = []) {
+  const children = [];
+  for (let index = 0, len = array.length; index < len; index++) {
+      const node = array[index];
+      // 找到儿子节点
+      if (node.parentId === parentId) {
+          children.push({
+              id: node.id,
+              val: node.val,
+              children: toTree(node.id, array)
+          });
+      }
+
+  }
+  return children;
+}
