@@ -52,3 +52,13 @@ function red() {
   
   step();
   
+
+  // 其他实现方法
+
+  const start = async function() {
+    await light(3000, red);
+    await light(2000, green);
+    await light(1000, yellow);
+    start();
+  }
+  start();

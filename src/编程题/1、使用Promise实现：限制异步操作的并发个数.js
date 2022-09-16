@@ -42,7 +42,7 @@ class Limitpromise {
                     task()
                 }
             })
-            this._count++
+        this._count++
         }
     }
 }
